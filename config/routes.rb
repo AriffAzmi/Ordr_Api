@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  
+  get 'users/new'
+
+  root 'landing_page#home'
+  
+  get 'landing_page/home'
+
+  get 'landing_page/about'
+
+  get 'landing_page/help'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
