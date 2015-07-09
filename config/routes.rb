@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   get 'users/new'
+  get 'users/show'
 
   root 'landing_page#home'
   
@@ -9,6 +10,16 @@ Rails.application.routes.draw do
   get 'landing_page/about'
 
   get 'landing_page/help'
+  
+  get 'foods/new'
+  get 'foods/index'
+  get 'foods/show'
+  
+  namespace :api do
+    get 'foods' => 'foods#index'
+  end
+  resources :users
+  resources :foods
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
