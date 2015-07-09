@@ -15,7 +15,7 @@ class DrinksController < ApplicationController
     
     def create
         
-        @drink = drink.new(drink_params)
+        @drink = Drink.new(drink_params)
         if @drink.save
         flash[:alert] = "Successfully create drink"
         redirect_to @drink
@@ -32,7 +32,7 @@ class DrinksController < ApplicationController
     private
     
     def drink_params
-        params.require(:drink).permit(:drinks, :qty)
+        params.require(:drink).permit(:name)
     end
     
 end
