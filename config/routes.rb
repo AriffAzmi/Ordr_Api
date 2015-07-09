@@ -15,11 +15,21 @@ Rails.application.routes.draw do
   get 'foods/index'
   get 'foods/show'
   
+  get 'drinks/new'
+  get 'drinks/index'
+  get 'drinks/show'
+  
   namespace :api do
     get 'foods' => 'foods#index'
   end
+  
+  namespace :api do
+    get 'drinks' => 'drinks#index'
+  end
+  
   resources :users
   resources :foods
+  resources :drinks
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
