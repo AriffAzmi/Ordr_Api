@@ -20,14 +20,6 @@ ActiveRecord::Schema.define(version: 20150710164006) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "food_lists", force: :cascade do |t|
-    t.text     "food"
-    t.text     "drink"
-    t.integer  "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "foods", force: :cascade do |t|
     t.text     "name"
     t.integer  "qty"
@@ -40,7 +32,6 @@ ActiveRecord::Schema.define(version: 20150710164006) do
     t.string   "email"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "role"
     t.string   "password_digest"
   end
 
