@@ -8,10 +8,10 @@
       <%= render 'shared/error_messages_food'%>
     
       <%= f.label :Food %>
-      <%= f.text_field :foodlist, class: "form-control" %>
+      <%= f.text_field :name, class: "form-control" %>
       
       <%= f.label :quantity %>
-      <%= f.number_field :quantity, class: "form-control" %>
+      <%= f.number_field :qty, class: "form-control" %>
 
       <%= f.submit "Update foodlist", class: "btn btn-primary" %>
       <%= button_tag "Reset", type: :reset, class: "btn btn-danger" %>

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'foods/new'
   get 'foods/index'
   get 'foods/show'
+  delete 'foods'  => 'foods#destroy'
   
   get 'drinks/new'
   get 'drinks/index'
