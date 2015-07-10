@@ -1,29 +1,28 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<% provide(:title, 'Register User') %>
+<h1>Register User</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
-      
-      <%= render 'shared/error_messages'%>
-    
+      <%= render 'shared/error_messages' %>
+
       <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, class: 'form-control' %>
 
       <%= f.label :email %>
-      <%= f.email_field :email %>
+      <%= f.email_field :email, class: 'form-control' %>
       
       <%= f.label :role %>
-      <%= select_tag(:role, options_for_select([['Admin', 'Admin'], ['Manager', 'Manager'], ['Waiter', 'Waiter'], ['Chef', 'Chef']])) %>
+      <%= f.select :role,options_for_select(["Manager", "Chef", "Waiter"]),{}, class: 'form-control' %>
 
       <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, class: 'form-control' %>
       
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.submit "Create account", class: "btn btn-primary" %>
-      <%= button_tag "Reset", type: :reset, class: "btn btn-danger" %>
+      <%= f.label :password_confirmation, "Password Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      
+      <br />
+      <%= f.submit "Create my account", class: "btn btn-success" %>
     <% end %>
   </div>
 </div>

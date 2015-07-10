@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get 'drinks/new'
   get 'drinks/index'
   get 'drinks/show'
+  get 'drinks/edit'
   
   namespace :api do
     get 'foods' => 'foods#index'

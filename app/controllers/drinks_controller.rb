@@ -4,6 +4,10 @@ class DrinksController < ApplicationController
         @drink = Drink.new
     end
     
+    def edit
+        @drink = Drink.find(params[:id])
+    end
+    
     def index
         @drinks = Drink.all
         
@@ -26,6 +30,15 @@ class DrinksController < ApplicationController
     
     def show
         @drink = Drink.all
+    end
+    
+    def update
+        @drink = Drink.find(params[:id])
+        if @drink.update(drink_params)
+            redirect_to @drink
+        else
+            render 'edit'
+        end
     end
     
     

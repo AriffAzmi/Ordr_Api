@@ -4,6 +4,10 @@ class FoodsController < ApplicationController
         @food = Food.new
     end
     
+    def edit
+        @food = Food.find(params[:id])        
+    end
+    
     def index
         @foods = Food.all
         
@@ -26,6 +30,15 @@ class FoodsController < ApplicationController
     
     def show
         @food = Food.all
+    end
+    
+    def update
+        @food = Food.find(params[:id])
+        if @food.update(food_params)
+            redirect_to @food
+        else
+            render 'edit'
+        end
     end
     
     
