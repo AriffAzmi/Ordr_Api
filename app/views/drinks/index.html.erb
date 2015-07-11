@@ -1,6 +1,7 @@
 <% provide(:title, 'Drink Api') %>
 
 <% @drinks.each do |d| %>
-    <h1><%= f.name %></h1>
-    <h1><%= f.qty %></h1>
+    <ul>
+    	<li><%= d.name %> | <a href="<%= d.id %>/edit">Edit</a> </li>
+    </ul>
 <% end %>

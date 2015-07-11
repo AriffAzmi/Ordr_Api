@@ -1,4 +1,5 @@
 class FoodsController < ApplicationController
+skip_before_filter :verify_authenticity_token, :only => [:create]
     
     def new
         @food = Food.new
@@ -35,7 +36,7 @@ class FoodsController < ApplicationController
     def update
         @food = Food.find(params[:id])
         if @food.update(food_params)
-            redirect_to @food
+            redirect_to @foods
         else
             render 'edit'
         end
@@ -51,6 +52,6 @@ class FoodsController < ApplicationController
     private
     
     def food_params
-        params.require(:food).permit(:name, :qty)
+        params.require(:food).permit(:name)
     end
 end

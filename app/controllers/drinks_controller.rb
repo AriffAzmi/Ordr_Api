@@ -1,20 +1,18 @@
 class DrinksController < ApplicationController
+skip_before_filter :verify_authenticity_token, :only => [:create, :update]
+before_action :set_drink, only: [:show, :update, :destroy]
     
-    def new
-        @drink = Drink.new
-    end
-    
-    def edit
-        @drink = Drink.find(params[:id])
-    end
     
     def index
         @drinks = Drink.all
         
         respond_to do |format|
             format.html { render 'index' }
-            format.json { render json: @drinks}
         end
+    end
+
+    def new
+        @drink = Drink.new
     end
     
     def create
@@ -31,6 +29,10 @@ class DrinksController < ApplicationController
     def show
         @drink = Drink.all
     end
+
+    def edit
+        @drink = Drink.find(params[:id])
+    end
     
     def update
         @drink = Drink.find(params[:id])
@@ -43,6 +45,10 @@ class DrinksController < ApplicationController
     
     
     private
+
+    def set_drink
+        @drink = Drink.find(params[:id])
+    end
     
     def drink_params
         params.require(:drink).permit(:name)
