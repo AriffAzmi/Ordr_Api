@@ -47,6 +47,18 @@ skip_before_filter :verify_authenticity_token, :only => [:create]
         @food.destroy
         
     end
+
+    def angular_index
+       render 'index' 
+    end
+
+    def angular_get_single
+       render 'edit' 
+    end
+
+    def angular_create
+        render "create"
+    end
     
     
     private

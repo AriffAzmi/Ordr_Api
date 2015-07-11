@@ -42,6 +42,18 @@ before_action :set_drink, only: [:show, :update, :destroy]
             render 'edit'
         end
     end
+
+    def angular_index
+       render 'index' 
+    end
+
+    def angular_get_single
+       render 'edit' 
+    end
+
+    def angular_create
+        render "create"
+    end
     
     
     private

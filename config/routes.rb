@@ -20,16 +20,20 @@ Rails.application.routes.draw do
   get 'users/show'
   
   # get 'foods/new'
-  # get 'foods/index'
-  # get 'foods/show'
+  get 'foods'           => 'foods#angular_index'
+  get 'foods/edit/:id'  => 'foods#angular_get_single'
+  get 'foods/new'       => 'foods#angular_create'
   # delete 'foods'  => 'foods#destroy'
   
   # get 'drinks/new'
   # get 'drinks/index'
   # get 'drinks/show'
   # get 'drinks/edit'
+  get 'drinks'           => 'drinks#angular_index'
+  get 'drinks/edit/:id'  => 'drinks#angular_get_single'
+  get 'drinks/new'       => 'drinks#angular_create'
 
-    resources :users
+  resources :users
   # resources :foods
   # resources :drinks
   

@@ -1,17 +1,15 @@
 <% provide(:title, 'Food Api') %>
 
-<h3>Edit drink</h3>
-
 <div ng-app="myApp" ng-controller="DrinkController">
 
 <button ng-click="bawaPergiIndexLahLahanat()" class="btn btn-default" style="text-transformation:capitalize">Back</button>
-<br/><br/>
-<form ng-submit="update()">
+
+<form ng-submit="create()">
 <div class="form-group">
   <label>Name: </label>
     <input type="text" class="form-control" placeholder="" ng-model="foodName">
 </div>
-<button type="submit" class="btn btn-primary" style="text-transform:capitalize;">Update</button>
+<button type="submit" class="btn btn-primary" style="text-transform:capitalize;">Create</button>
 </form>
 
 
@@ -28,29 +26,20 @@ app.controller('DrinkController', function($scope, $http, $window){
       $window.location.href = "http://localhost:3000/drinks"
     }
 
-  var urlParam = <%= params[:id] %>
-  console.log("ID: " + urlParam);
-
   var host = window.location.host;
   console.log(host); // get hostname (locahost OR example.com)
 
-  $http.get("http://" + host + "/api/drinks/" + urlParam)
-    .success(function(data) {
-      console.log(data);
-      $scope.foodName = data.name;
-    });
-
-  $scope.update = function(){
+  $scope.create = function(){
     var foodName = $scope.foodName;
     console.log(foodName);
 
-    $http.put("http://" + host + "/api/drinks/" + urlParam, {name: foodName})
+    $http.post("http://" + host + "/api/drinks/", {name: foodName})
     .success(function(data) {
-      console.log("record updated");
+      console.log("record created");
       $window.location.href = "http://localhost:3000/drinks"
     })
     .error(function(){
-      console.log("update error")
+      console.log("record create error")
     });
 
 

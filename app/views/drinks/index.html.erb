@@ -1,7 +1,74 @@
-<% provide(:title, 'Drink Api') %>
+<% provide(:title, 'Food Api') %>
+<h3>Drinks</h3>
+<div ng-app="myApp" ng-controller="DrinkController" ng-init="runWhenReload()">
+	<div class="pull-right">
+		<button ng-click="xxx()" class="btn btn-primary">Add New Drink</button><br><br>
+	</div>
+	<table class="table-bordered table table-striped">
+		<thead>
+			<tr>
+				<td>#</td>
+				<td>Name</td>
+				<td>Action</td>
+			</tr>	
+		</thead>
+		<tbody>
+			<tr ng-repeat="(k,v) in drinks">
+				<td>{{k+1}}</td>
+				<td>{{v.name}}</td>
+				<td>
+					<button class="btn btn-primary" style="text-transform:capitalize;" ng-click="edit(v.id)">Edit</button>
+					&nbsp;
+					<button class="btn btn-danger" ng-click="delete(v.id)">Delete</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 
-<% @drinks.each do |d| %>
-    <ul>
-    	<li><%= d.name %> | <a href="<%= d.id %>/edit">Edit</a> </li>
-    </ul>
-<% end %>
+	<!-- <ul ng-repeat="food in foods">
+		<li>{{food.name}}</li>
+	</ul> -->
+</div>
+
+<script type="text/javascript">
+
+var app = angular.module('myApp', []);
+
+app.controller('DrinkController', function($scope, $http, $window){
+
+	var host = window.location.host;
+
+	$scope.runWhenReload = function(){
+		console.log("hello!");
+		$http.get("../api/drinks")
+		    .success(function(data) {
+		    	$scope.drinks = data.drinks;
+		    });
+	}
+
+    //$timeout( function(){ $scope.showAllFoods(); }, 500);
+
+    $scope.edit = function(id){
+    	console.log('edit ID ' + id);
+    	$window.location.href = "http://localhost:3000/drinks/edit/" + id;
+    }
+
+    $scope.delete = function(id){
+    	console.log('delete ID ' + id);
+    	$http.delete("http://" + host + "/api/drinks/" + id)
+    		.success(function(data){
+    			// kalau delete berjaya
+    			$window.location.reload();
+    		})
+    		.error(function(){
+    			// kalau delete tak berjaya
+    		})
+    }
+
+    $scope.xxx = function(){
+    	console.log("button clicked!");
+    	$window.location.href = "http://localhost:3000/drinks/new"
+    }
+});
+
+</script>
